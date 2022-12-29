@@ -1,9 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-const instance = axios.create({
-  baseURL: `http://localhost:4000/`,
-});
+const API_ROOT =
+  process.env.NODE_ENV === "production"
+    ? "/api"
+    : "http://localhost:4000/api";
 
-export default instance;
+const WS_URL =
+  process.env.NODE_ENV === "production"
+    ? window.location.origin.replace(/^https*/, "ws")
+    : "ws://localhost:4000";
 
-// instance.get('/hi').then((data) => console.log(data));
+export const api = axios.create({ baseURL: API_ROOT });
+export const ws = new WebSocket(WS_URL);
