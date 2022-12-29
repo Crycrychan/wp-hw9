@@ -12,3 +12,6 @@ app.listen(port, () =>
 app.use(cors());
 app.use(express.json());
 app.use('/', routes);
+app.get('/', function(req, res) {
+    res.render('index', {});
+});
