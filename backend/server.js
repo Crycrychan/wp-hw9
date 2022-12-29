@@ -13,5 +13,5 @@ app.use(cors());
 app.use(express.json());
 app.use('/', routes);
 app.get('/', function(req, res) {
-    res.render('index', {});
+    res.send({ message: "Hello from the server!" }).status(200);
 });
